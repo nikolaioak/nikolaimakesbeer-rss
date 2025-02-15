@@ -47,8 +47,7 @@ function makeRss(outputFilePath, beerDataJson, tinkeringDataJson) {
     });
 
     // initialize XML
-    let feedXml = `
-        <?xml version="1.0" encoding="UTF-8" ?>
+    let feedXml = `<?xml version="1.0" encoding="UTF-8" ?>
         <rss version="2.0">
         <channel>
             <title>Nikolai Makes Beer</title>
