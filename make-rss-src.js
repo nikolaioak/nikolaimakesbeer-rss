@@ -6,16 +6,19 @@ function makeRss(outputFilePath, beerDataJson, tinkeringDataJson) {
 
     // build a consolidated array of objects for sorting by date
     let feedArray = [];
+    let beerUrl = new URL('https://nikolaimakes.beer/beer-details.html');
+    let tinkeringUrl = new URL('https://nikolaimakes.beer/tinkering-details.html');
 
     // beer data first
     beerData.beerData.forEach((beer) => {
         let beerDt = new Date(Date.parse(beer.startDate));
         let beerMon = beerDt.toLocaleString('default', { month: 'short' });
         let beerYr = beerDt.getFullYear();
+        beerUrl.searchParams.set('beer', beer.id);
         feedArray.push(
             {
                 "title": `${beerMon} ${beerYr} - ${beer.name}`,
-                "link": `https://nikolaimakes.beer/beer-details.html?beer=${beer.id}`,
+                "link": `${beerUrl}`,
                 "description": `${beer.beerType}`,
                 "date": beerDt
             }
@@ -27,10 +30,11 @@ function makeRss(outputFilePath, beerDataJson, tinkeringDataJson) {
         let tinkeringDt = new Date(Date.parse(tinkering.entryDate));
         let tinkeringMon = tinkeringDt.toLocaleString('default', { month: 'short' });
         let tinkeringYr = tinkeringDt.getFullYear();
+        tinkeringUrl.searchParams.set('tinkering', tinkering.id);
         feedArray.push(
             {
                 "title": `${tinkeringMon} ${tinkeringYr} - ${tinkering.title}`,
-                "link": `https://nikolaimakes.beer/tinkering-details.html?tinkering=${tinkering.id}`,
+                "link": `${tinkeringUrl}`,
                 "description": `A post about tinkering: ${tinkering.title}`,
                 "date": tinkeringDt
             }
