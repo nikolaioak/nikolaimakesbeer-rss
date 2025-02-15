@@ -1,0 +1,33 @@
+{
+    "name": "nikolaimakesbeer-rss",
+    "description": "RSS Feed Generator for NikolaiMakesBeer - converts JSON data files to RSS XML",
+    "version": "0.0.1",
+    "main": "make-rss-src.js",
+    "bin": {
+        "make-rss": "./make-rss.js"
+    },
+    "dependencies": {
+        "check-more-types": "1.8.2"
+    },
+    "scripts": {
+        "file-example": "node make-rss.js feed.xml ./test/beer-data.json ./test/tinkering-data.json"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nikolaioak/nikolaimakesbeer-rss.git"
+    },
+    "keywords": [
+        "rss",
+        "feed",
+        "xml",
+        "json",
+        "converter",
+        "nikolaimakesbeer"
+    ],
+    "author": "Nikolai Oakfield <hello@nikolaimakes.beer>",
+    "license": "GPL-3.0-only",
+    "bugs": {
+        "url": "https://github.com/nikolaioak/nikolaimakesbeer-rss/issues"
+    },
+    "homepage": "https://github.com/nikolaioak/nikolaimakesbeer-rss"
+}
