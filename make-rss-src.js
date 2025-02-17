@@ -17,9 +17,9 @@ function makeRss(outputFilePath, beerDataJson, tinkeringDataJson) {
         beerUrl.searchParams.set('beer', beer.id);
         feedArray.push(
             {
-                "title": `${beerMon} ${beerYr} - ${beer.name}`,
+                "title": `${beer.name}`,
                 "link": `${beerUrl}`,
-                "description": `${beer.beerType}`,
+                "description": `${beerMon} ${beerYr} - ${beer.beerType}`,
                 "date": beerDt
             }
         );
@@ -33,7 +33,7 @@ function makeRss(outputFilePath, beerDataJson, tinkeringDataJson) {
         tinkeringUrl.searchParams.set('tinkering', tinkering.id);
         feedArray.push(
             {
-                "title": `${tinkeringMon} ${tinkeringYr} - ${tinkering.title}`,
+                "title": `${tinkering.title}`,
                 "link": `${tinkeringUrl}`,
                 "description": `A post about tinkering: ${tinkering.title}`,
                 "date": tinkeringDt
@@ -54,6 +54,13 @@ function makeRss(outputFilePath, beerDataJson, tinkeringDataJson) {
             <link>https://nikolaimakes.beer</link>
             <description>A page about beers nikolai makes and other stuff</description>
             <language>en-us</language>
+            <image>
+                <title>Nikolai Makes Beer</title>
+                <description>Nikolai Makes Beer</description>
+                <link>https://nikolaimakes.beer</link>
+                <url>https://nikolaimakes.beer/img/nikolaimakesbeer-favicon.ico</url>
+            </image>
+            <lastBuildDate>${new Date()}</lastBuildDate>
     `;
     // create feed items
     feedArray.forEach((item) => {
@@ -62,6 +69,7 @@ function makeRss(outputFilePath, beerDataJson, tinkeringDataJson) {
                 <title>${item.title}</title>
                 <link>${item.link}</link>
                 <description>${item.description}</description>
+                <pubDate>${item.date}</pubDate>
             </item>
         `;
     });
